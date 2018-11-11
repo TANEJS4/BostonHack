@@ -40,7 +40,7 @@ def info():
 @app.route('/volumeChange')
 def volumeChange():
     url = "http://192.168.1.17:8090/volume"
-    data = '<?xml version="1.0" encoding="UTF-8" ?><volume deviceID="' + info() + '><targetvolume>' + my_form_post + '</targetvolume><actualvolume>' + my_form_post +'</actualvolume><muteenabled>false</muteenabled></volume>'
+    data = '<volume>'+my_form_post+'</volume>'
     r = requests.post(url = url, data = data )
     result = (r.text)
     return result
@@ -64,6 +64,22 @@ def removeSlave():
         data = '<zone master=' + info() + '><member ipaddress=' getSlaveStatus()' + '>+ info() + '</member></zone>'
     r = requests.post(url = url, data = data )
     return r
+
+@app.route('/speaker')
+def lowSpeaker():
+    url = "http://192.168.1.17:8090/speaker"
+    data = "<play_info><app_key>your_app_key_here</app_key><url>http://www.example.com/notification.mp3</url><service>service text</service><reason>reason text</reason><message>message text</message><volume>40</volume></play_info>"
+    r = requests.post(url = url, data = data)
+
+    return r
+@app.route('/speaker')
+def highSpeaker():
+    url = "http://192.168.1.17:8090/speaker"
+    data = "<play_info><app_key>your_app_key_here</app_key><url>http://www.example.com/notification.mp3</url><service>service text</service><reason>reason text</reason><message>message text</message><volume>40</volume></play_info>"
+    r = requests.post(url = url, data = data)
+    return r
+
+
 
 if __name__ == '__main__':
     print("Please connect your phone to your speaker via wifi")
