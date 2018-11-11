@@ -23,7 +23,6 @@ def volume():
     url = "http://192.168.1.17:8090/volume"
     r = requests.get(url)
     data = (r.text)
-    print ("Inside function")
     print (data)
     return data
 
@@ -68,14 +67,15 @@ def removeSlave():
 @app.route('/speaker')
 def lowSpeaker():
     url = "http://192.168.1.17:8090/speaker"
-    data = "<play_info><app_key>your_app_key_here</app_key><url>http://www.example.com/notification.mp3</url><service>service text</service><reason>reason text</reason><message>message text</message><volume>40</volume></play_info>"
+    data = "<play_info><app_key>your_app_key_here</app_key><url>https://raw.githubusercontent.com/TANEJS4/BostonHack/master/LowFrequency.mp3</url><service>service text</service><reason>reason text</reason><message>message text</message><volume>40</volume></play_info>"
     r = requests.post(url = url, data = data)
-
     return r
+
+
 @app.route('/speaker')
 def highSpeaker():
     url = "http://192.168.1.17:8090/speaker"
-    data = "<play_info><app_key>your_app_key_here</app_key><url>http://www.example.com/notification.mp3</url><service>service text</service><reason>reason text</reason><message>message text</message><volume>40</volume></play_info>"
+    data = "<play_info><app_key>your_app_key_here</app_key><url>https://raw.githubusercontent.com/TANEJS4/BostonHack/master/highFrequency.mp3</url><service>service text</service><reason>reason text</reason><message>message text</message><volume>40</volume></play_info>"
     r = requests.post(url = url, data = data)
     return r
 
