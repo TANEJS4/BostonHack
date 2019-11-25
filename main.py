@@ -11,26 +11,29 @@ def my_form_post():
     text = request.form['text']
     return processed_text
 
-# @app.route('/volume')
-# def volume():
-#     url = "http://192.168.1.17:8090/volume"
-#     r = requests.get(url)
-#     data = (r.text)
-#     print (data)
-#     return data
+@app.route('/volume')
+def volume():
+    url = "http://192.168.1.17:8090/volume"
+    r = requests.get(url)
+    data = (r.text)
+    print (data)
+    return data
 
-# def info():
-#     url = "http://192.168.1.17:8090/volume"
-#     data = requests.get(url)
-#     tree = ET.parse(data)
-#     root = tree.getroot()
-#     attr = root.attrib
-#     splitAttr = atrr.split('=')
-#     deviceINFO = splitAttr[1]
-#     return deviceINFO
+
+def info():
+    url = "http://<ipconfig:8090/volume"
+    data = requests.get(url)
+    tree = ET.parse(data)
+    root = tree.getroot()
+    attr = root.attrib
+    splitAttr = atrr.split('=')
+    deviceINFO = splitAttr[1]
+    return deviceINFO
+
 
 @app.route('/<ipconfig>/volume/<v>/')
-def volumeChange(ipconfig,v):
+def volumeChange(ipco
+nfig,v):
     url = 'http://' + ipconfig + ':8090/volume'
     r1 = requests.get(url)
     data1 = (r1.text)
@@ -53,13 +56,13 @@ def volumeChange(ipconfig,v):
 #     return deviceINFO
 
 
-# @app.route('/removeSlave')
-# def removeSlave():
-#     url = "http://192.168.1.17:8090/removeZoneSlave"
-#     if (getSlaveStatus()!= 0):
-#         data = '<zone master=' + info() + '><member ipaddress=' getSlaveStatus()' + '>+ info() + '</member></zone>'
-#     r = requests.post(url = url, data = data )
-#     return r
+@app.route('/removeSlave')
+def removeSlave():
+    url = "http://192.168.1.17:8090/removeZoneSlave"
+    if (getSlaveStatus()!= 0):
+        data = '<zone master=' + info() + '><member ipaddress=' getSlaveStatus()' + '>+ info() + '</member></zone>'
+    r = requests.post(url = url, data = data )
+    return r
 
 @app.route('/<ipconfig>/speaker')
 def lowSpeaker(ipconfig):
